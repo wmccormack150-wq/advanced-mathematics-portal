@@ -1,55 +1,165 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>District 12 | Academic Resource Portal</title>
-<style>
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #e9ecef; color: #333; margin: 0; }
-.header { background-color: #2c3e50; color: white; padding: 20px; text-align: center; border-bottom: 5px solid #f39c12; }
-.container { width: 85%; margin: 30px auto; background: white; padding: 40px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px; }
-h2 { color: #2c3e50; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
-.doc-list { list-style: none; padding: 0; }
-.doc-item { display: flex; align-items: center; padding: 12px; border-bottom: 1px solid #eee; transition: background 0.2s; }
-.doc-item:hover { background-color: #f8f9fa; }
-.doc-icon { margin-right: 15px; font-size: 20px; }
-.doc-link { color: #0056b3; text-decoration: none; font-weight: 500; flex-grow: 1; }
-.doc-link:hover { text-decoration: underline; }
-.status { font-size: 12px; color: #666; font-style: italic; }
-.footer { text-align: center; margin-top: 30px; font-size: 13px; color: #777; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fieldstation | Research Archive 07</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #edf2f1;
+      color: #20333b;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #10283a;
+      color: white;
+      padding: 32px 20px;
+      border-bottom: 5px solid #83c9bd;
+    }
+
+    .header-inner, main, footer {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .eyebrow {
+      color: #a9dcd3;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    h1 { margin-bottom: 5px; }
+    header p { color: #d3e3e9; }
+
+    main { padding: 24px 16px; }
+
+    .notice {
+      background: white;
+      border-left: 4px solid #328779;
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 5px;
+    }
+
+    .documents {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .document {
+      display: block;
+      background: white;
+      color: inherit;
+      text-decoration: none;
+      border: 1px solid #d3dfdc;
+      border-radius: 10px;
+      padding: 22px;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+
+    .document:hover, .document:focus-visible {
+      transform: translateY(-3px);
+      border-color: #328779;
+      outline: 2px solid #328779;
+      outline-offset: 2px;
+    }
+
+    .file-number {
+      color: #328779;
+      font-size: 0.8rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .document h2 { font-size: 1.2rem; }
+
+    .open-label {
+      color: #24695e;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      padding: 12px 16px 32px;
+      color: #53676d;
+      font-size: 0.85rem;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="header-inner">
+      <div class="eyebrow">FIELDSTATION • STUDENT RESEARCH</div>
+      <h1>Research Archive 07</h1>
+      <p>Observation. Evidence. Discovery.</p>
+    </div>
+  </header>
 
-<div class="header">
-<h1>District 12 Student Resource Hub</h1>
-<p>Authorized Access Only | Educational Materials Archive</p>
-</div>
+  <main>
+    <div class="notice">
+      <strong>Investigation briefing</strong>
+      <p>
+        Three laboratory records have been recovered.
+        Review the research summaries and identify the record
+        that best matches your teacher's clue.
+        Your next assignment awaits.
+      </p>
+    </div>
 
-<div class="container">
-<h2>Available Study Documents</h2>
-<ul class="doc-list">
-<li class="doc-item">
-<span class="doc-icon">📄</span>
-<a href="https://www.wikipedia.org/" class="doc-link">Unit 1: Introduction to Macroeconomics.pdf</a>
-<span class="status">Verified</span>
-</li>
-<!-- This is the secret link to your portal -->
-<li class="doc-item">
-<span class="doc-icon">📄</span>
-<a href="portal.html" class="doc-link">Unit 2: The Industrialization of Combat.pdf</a>
-<span class="status">Pending Review</span>
-</li>
-<li class="doc-item">
-<span class="doc-icon">📄</span>
-<a href="https://www.britannica.com/" class="doc-link">Unit 3: Analysis of Ancient Civilizations.pdf</a>
-<span class="status">Verified</span>
-</li>
-</ul>
-</div>
+    <section class="documents" aria-label="Research documents">
+      <a class="document" href="#water-log">
+        <div class="file-number">RECORD 01</div>
+        <h2>The Water Log</h2>
+        <p>Temperature measurements and water-sample observations.</p>
+        <span class="open-label">Review record →</span>
+      </a>
 
-<div class="footer">
-&copy; 2024 District 12 Department of Education. All rights reserved.
-</div>
+      <a class="document" href="#microscopy-notes">
+        <div class="file-number">RECORD 02</div>
+        <h2>Microscopy Notes</h2>
+        <p>Cell structures, magnification, and laboratory notes.</p>
+        <span class="open-label">Review record →</span>
+      </a>
 
+      <!-- Replace the example URL with your approved
+           password-protected classroom destination. -->
+      <a class="document"
+         href="https://YOUR-SCHOOL-LEARNING-PLATFORM.example/">
+        <div class="file-number">RECORD 03</div>
+        <h2>The Unusual Specimen</h2>
+        <p>An experiment record containing the next stage.</p>
+        <span class="open-label">Open research record →</span>
+      </a>
+    </section>
+
+    <section id="water-log" class="notice" style="margin-top:24px">
+      <h2>Record 01: Water Log</h2>
+      <p>
+        Samples were collected from three locations.
+        The researcher recorded temperature, clarity,
+        and collection time for each sample.
+      </p>
+    </section>
+
+    <section id="microscopy-notes" class="notice">
+      <h2>Record 02: Microscopy Notes</h2>
+      <p>
+        The lab team compared prepared slides and noted
+        differences in visible cell structures.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    Fieldstation Research Archive • Classroom Investigation
+  </footer>
 </body>
 </html>
