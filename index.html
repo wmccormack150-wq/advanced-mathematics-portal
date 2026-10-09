@@ -1,33 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Global Educational Archive | Student Portal</title>
+<meta charset="UTF-8">
+<title>District 12 | Academic Resource Portal</title>
 <style>
-body { font-family: 'Times New Roman', serif; background-color: #f4f4f4; color: #333; line-height: 1.6; }
-.container { width: 80%; margin: auto; background: white; padding: 20px; border: 1px solid #ccc; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); }
-h1 { color: #2c3e50; text-align: center; border-bottom: 2px solid #2c3e50; }
-.footer { text-align: center; font-size: 12px; margin-top: 50px; color: #777; }
-a { color: #2980b9; text-decoration: none; }
-/* The Secret Link Style */
-.secret-link { color: #f4f4f4; text-decoration: none; cursor: default; }
-.secret-link:hover { color: #ddd; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #e9ecef; color: #333; margin: 0; }
+.header { background-color: #2c3e50; color: white; padding: 20px; text-align: center; border-bottom: 5px solid #f39c12; }
+.container { width: 85%; margin: 30px auto; background: white; padding: 40px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px; }
+h2 { color: #2c3e50; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+.doc-list { list-style: none; padding: 0; }
+.doc-item { display: flex; align-items: center; padding: 12px; border-bottom: 1px solid #eee; transition: background 0.2s; }
+.doc-item:hover { background-color: #f8f9fa; }
+.doc-icon { margin-right: 15px; font-size: 20px; }
+.doc-link { color: #0056b3; text-decoration: none; font-weight: 500; flex-grow: 1; }
+.doc-link:hover { text-decoration: underline; }
+.status { font-size: 12px; color: #666; font-style: italic; }
+.footer { text-align: center; margin-top: 30px; font-size: 13px; color: #777; }
 </style>
 </head>
 <body>
+
+<div class="header">
+<h1>District 12 Student Resource Hub</h1>
+<p>Authorized Access Only | Educational Materials Archive</p>
+</div>
+
 <div class="container">
-<h1>Digital Literacy & Research Archive</h1>
-<p>Welcome to the centralized repository for student research. Please select a module below to begin your study session.</p>
-<ul>
-<li><a href="#">Module 1: The Industrial Revolution</a></li>
-<li><a href="#">Module 2: Algebraic Foundations</a></li>
-<li><a href="#">Module 3: Environmental Science</a></li>
+<h2>Available Study Documents</h2>
+<ul class="doc-list">
+<li class="doc-item">
+<span class="doc-icon">📄</span>
+<a href="https://www.wikipedia.org/" class="doc-link">Unit 1: Introduction to Macroeconomics.pdf</a>
+<span class="status">Verified</span>
+</li>
+<!-- This is the secret link to your portal -->
+<li class="doc-item">
+<span class="doc-icon">📄</span>
+<a href="portal.html" class="doc-link">Unit 2: The Industrialization of Combat.pdf</a>
+<span class="status">Pending Review</span>
+</li>
+<li class="doc-item">
+<span class="doc-icon">📄</span>
+<a href="https://www.britannica.com/" class="doc-link">Unit 3: Analysis of Ancient Civilizations.pdf</a>
+<span class="status">Verified</span>
+</li>
 </ul>
-<p>Ensure all citations follow the APA 7th edition guidelines. Failure to cite sources may result in a grade reduction.</p>
 </div>
+
 <div class="footer">
-&copy; 2024 Educational Systems Inc.
-<!-- This is the hidden door. Only you know to click the period. -->
-<a href="portal.html" class="secret-link">.</a>
+&copy; 2024 District 12 Department of Education. All rights reserved.
 </div>
+
 </body>
 </html>
