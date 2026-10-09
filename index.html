@@ -1,165 +1,234 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fieldstation | Research Archive 07</title>
+  <meta name="theme-color" content="#10283a">
+  <title>FIELDSTATION | Archive Ω-13</title>
   <style>
+    :root {
+      --navy: #10283a;
+      --navy2: #1b3b4e;
+      --mint: #8cd9d0;
+      --paper: #f0f4f2;
+      --card: #ffffff;
+      --ink: #20333b;
+      --muted: #5b7077;
+      --line: #d6e1de;
+      --accent: #28796d;
+      --warning: #9a6a20;
+    }
     * { box-sizing: border-box; }
-
     body {
-      margin: 0;
-      background: #edf2f1;
-      color: #20333b;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
+      margin: 0; background: var(--paper); color: var(--ink);
+      font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-
-    header {
-      background: #10283a;
-      color: white;
-      padding: 32px 20px;
-      border-bottom: 5px solid #83c9bd;
+    header { background: var(--navy); color: white; border-bottom: 5px solid var(--mint); }
+    .wrap { width: min(960px, calc(100% - 32px)); margin: 0 auto; }
+    .masthead { padding: 28px 0 30px; }
+    .eyebrow { color: var(--mint); font-size: .76rem; font-weight: 800; letter-spacing: .16em; }
+    h1 { margin: 8px 0 4px; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; }
+    header p { color: #d1e0e5; max-width: 680px; margin-bottom: 0; }
+    main { padding: 26px 0 44px; }
+    .notice, .panel, .record, .gate, .success {
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
     }
-
-    .header-inner, main, footer {
-      max-width: 900px;
-      margin: auto;
+    .notice { border-left: 5px solid var(--accent); padding: 17px 20px; margin-bottom: 24px; }
+    .notice p { margin: 5px 0 0; }
+    .section-title { margin: 28px 0 12px; font-size: 1.25rem; }
+    .records { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 215px), 1fr)); gap: 14px; }
+    .record { padding: 19px; display: flex; flex-direction: column; min-height: 225px; }
+    .record-tag { color: var(--accent); font-size: .76rem; font-weight: 800; letter-spacing: .12em; }
+    .record h3 { margin: 9px 0 7px; font-size: 1.2rem; }
+    .record p { margin: 0 0 18px; color: var(--muted); }
+    .record button { margin-top: auto; }
+    button, .button-link {
+      border: 0; border-radius: 8px; padding: 11px 15px; font: inherit; font-weight: 750;
+      cursor: pointer; text-decoration: none; display: inline-flex; align-items: center;
+      justify-content: center; gap: 8px;
     }
-
-    .eyebrow {
-      color: #a9dcd3;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      font-weight: bold;
+    button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #e2a84b; outline-offset: 3px; }
+    .primary { background: var(--accent); color: white; }
+    .secondary { background: #eaf2f0; color: var(--navy); border: 1px solid var(--line); }
+    .panel { margin-top: 22px; padding: 20px; }
+    .panel h2 { margin-top: 0; }
+    .panel[hidden], .record-detail[hidden], .success[hidden] { display: none; }
+    .record-detail { margin-top: 16px; padding: 18px; border-radius: 10px; background: #f5f8f7; border: 1px dashed #9fbab4; }
+    .record-detail h3 { margin-top: 0; }
+    .file-meta { font-size: .8rem; color: var(--muted); letter-spacing: .04em; }
+    .cipher-list { display: grid; gap: 10px; margin: 14px 0; }
+    .cipher-entry { padding: 12px 14px; background: white; border: 1px solid var(--line); border-radius: 8px; }
+    .cipher-entry strong { color: var(--accent); display: inline-block; min-width: 62px; }
+    .gate { margin-top: 22px; padding: 22px; }
+    label { display: block; font-weight: 750; margin: 14px 0 6px; }
+    input {
+      width: 100%; max-width: 520px; border: 1px solid #9eb4b0; border-radius: 8px;
+      padding: 12px; font: inherit; background: white; color: var(--ink);
     }
-
-    h1 { margin-bottom: 5px; }
-    header p { color: #d3e3e9; }
-
-    main { padding: 24px 16px; }
-
-    .notice {
-      background: white;
-      border-left: 4px solid #328779;
-      padding: 16px;
-      margin-bottom: 24px;
-      border-radius: 5px;
-    }
-
-    .documents {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-
-    .document {
-      display: block;
-      background: white;
-      color: inherit;
-      text-decoration: none;
-      border: 1px solid #d3dfdc;
-      border-radius: 10px;
-      padding: 22px;
-      transition: transform 0.15s, border-color 0.15s;
-    }
-
-    .document:hover, .document:focus-visible {
-      transform: translateY(-3px);
-      border-color: #328779;
-      outline: 2px solid #328779;
-      outline-offset: 2px;
-    }
-
-    .file-number {
-      color: #328779;
-      font-size: 0.8rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    .document h2 { font-size: 1.2rem; }
-
-    .open-label {
-      color: #24695e;
-      font-weight: bold;
-      font-size: 0.9rem;
-    }
-
-    footer {
-      padding: 12px 16px 32px;
-      color: #53676d;
-      font-size: 0.85rem;
-    }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .feedback { margin-top: 12px; min-height: 1.5em; font-weight: 650; }
+    .feedback.error { color: #9a352f; }
+    .feedback.good { color: #24695e; }
+    .success { margin-top: 18px; padding: 22px; background: #e8f4ef; border-color: #9ac8b9; }
+    .success h2 { margin: 0 0 6px; }
+    .success p { margin: 0 0 14px; }
+    .small { color: var(--muted); font-size: .9rem; }
+    footer { border-top: 1px solid var(--line); padding: 20px 0 34px; color: var(--muted); font-size: .85rem; }
+    .pill { display: inline-block; padding: 3px 8px; border-radius: 999px; background: #e7efed; color: #315c56; font-size: .75rem; font-weight: 800; }
+    @media (max-width: 480px) { .wrap { width: min(100% - 22px, 960px); } .record { min-height: 0; } }
   </style>
 </head>
 <body>
   <header>
-    <div class="header-inner">
-      <div class="eyebrow">FIELDSTATION • STUDENT RESEARCH</div>
-      <h1>Research Archive 07</h1>
-      <p>Observation. Evidence. Discovery.</p>
+    <div class="wrap masthead">
+      <div class="eyebrow">FIELDSTATION • STUDENT RESEARCH PORTAL</div>
+      <h1>Archive Ω-13</h1>
+      <p>Observation is only the beginning. Examine the records, identify the pattern, and submit your conclusion to continue the investigation.</p>
     </div>
   </header>
 
-  <main>
-    <div class="notice">
-      <strong>Investigation briefing</strong>
-      <p>
-        Three laboratory records have been recovered.
-        Review the research summaries and identify the record
-        that best matches your teacher's clue.
-        Your next assignment awaits.
-      </p>
-    </div>
-
-    <section class="documents" aria-label="Research documents">
-      <a class="document" href="#water-log">
-        <div class="file-number">RECORD 01</div>
-        <h2>The Water Log</h2>
-        <p>Temperature measurements and water-sample observations.</p>
-        <span class="open-label">Review record →</span>
-      </a>
-
-      <a class="document" href="#microscopy-notes">
-        <div class="file-number">RECORD 02</div>
-        <h2>Microscopy Notes</h2>
-        <p>Cell structures, magnification, and laboratory notes.</p>
-        <span class="open-label">Review record →</span>
-      </a>
-
-      <!-- Replace the example URL with your approved
-           password-protected classroom destination. -->
-      <a class="document"
-         href="https://YOUR-SCHOOL-LEARNING-PLATFORM.example/">
-        <div class="file-number">RECORD 03</div>
-        <h2>The Unusual Specimen</h2>
-        <p>An experiment record containing the next stage.</p>
-        <span class="open-label">Open research record →</span>
-      </a>
+  <main class="wrap">
+    <section class="notice" aria-labelledby="briefing-title">
+      <strong id="briefing-title">Investigation briefing</strong>
+      <p>Four specimen records were recovered from an incomplete archive. Their notes may be unreliable. The labels, however, were added by the same archivist. Find the record that contains the key, then enter its specimen code below.</p>
     </section>
 
-    <section id="water-log" class="notice" style="margin-top:24px">
-      <h2>Record 01: Water Log</h2>
-      <p>
-        Samples were collected from three locations.
-        The researcher recorded temperature, clarity,
-        and collection time for each sample.
-      </p>
+    <h2 class="section-title">Recovered research records</h2>
+    <section class="records" aria-label="Recovered records">
+      <article class="record">
+        <div class="record-tag">RECORD 01</div>
+        <h3>V-17 · Shadow Log</h3>
+        <p>A note about an observation that appears to have happened before its cause.</p>
+        <button class="secondary" type="button" data-record="v17" aria-expanded="false">Open record</button>
+      </article>
+      <article class="record">
+        <div class="record-tag">RECORD 02</div>
+        <h3>K-04 · Sample Ledger</h3>
+        <p>A preserved sample whose description changed between two copies.</p>
+        <button class="secondary" type="button" data-record="k04" aria-expanded="false">Open record</button>
+      </article>
+      <article class="record">
+        <div class="record-tag">RECORD 03</div>
+        <h3>R-29 · Result Sheet</h3>
+        <p>A calculation with the right result and a questionable explanation.</p>
+        <button class="secondary" type="button" data-record="r29" aria-expanded="false">Open record</button>
+      </article>
+      <article class="record">
+        <div class="record-tag">RECORD 04</div>
+        <h3>M-11 · Missing Detail</h3>
+        <p>A complete report with one conspicuous omission.</p>
+        <button class="secondary" type="button" data-record="m11" aria-expanded="false">Open record</button>
+      </article>
     </section>
 
-    <section id="microscopy-notes" class="notice">
-      <h2>Record 02: Microscopy Notes</h2>
-      <p>
-        The lab team compared prepared slides and noted
-        differences in visible cell structures.
-      </p>
+    <section id="record-v17" class="record-detail" hidden>
+      <div class="file-meta">FIELD NOTE • V-17</div>
+      <h3>Shadow Log</h3>
+      <p>“The observer recorded the shadow before the light was measured.”</p>
+      <p class="small">Margin note: The sequence of events was never independently verified.</p>
+    </section>
+    <section id="record-k04" class="record-detail" hidden>
+      <div class="file-meta">FIELD NOTE • K-04</div>
+      <h3>Sample Ledger</h3>
+      <p>“The sample remained unchanged, but its description differed between copies.”</p>
+      <p class="small">Margin note: No evidence indicates the specimen itself was altered.</p>
+    </section>
+    <section id="record-r29" class="record-detail" hidden>
+      <div class="file-meta">FIELD NOTE • R-29</div>
+      <h3>Result Sheet</h3>
+      <p>“The final result matched the reference value, although the written reasoning contained an error.”</p>
+      <p class="small">Margin note: A correct answer does not prove that the method was correct.</p>
+    </section>
+    <section id="record-m11" class="record-detail" hidden>
+      <div class="file-meta">FIELD NOTE • M-11</div>
+      <h3>Missing Detail</h3>
+      <p>“The report contains every required section except the one detail the archivist was asked to preserve.”</p>
+      <p class="small">Margin note: The omission appears deliberate.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="archive-note-title">
+      <span class="pill">ARCHIVE NOTE</span>
+      <h2 id="archive-note-title">The Observer's Error</h2>
+      <p>Four specimens were logged, but only one entry is authentic.</p>
+      <p><strong>V-17:</strong> The observer recorded the shadow before the light was measured.</p>
+      <p><strong>K-04:</strong> The sample was unchanged, but its description differed.</p>
+      <p><strong>R-29:</strong> The result was correct, though the reasoning was false.</p>
+      <p><strong>M-11:</strong> The record was complete, except for the one detail that mattered.</p>
+      <p><em>“The answer is not in what was recorded. It is in what the recorder consistently refused to record.”</em></p>
+      <p class="small">Research task: identify the specimen whose code fits the archivist's hidden rule. The rule is specific to this archive; no outside scientific fact is required.</p>
+    </section>
+
+    <section class="gate" aria-labelledby="gate-title">
+      <div class="file-meta">TERMINAL • Ω-13</div>
+      <h2 id="gate-title">Submit your finding</h2>
+      <p>Enter the specimen code you believe contains the key. If your answer is not accepted, revisit the records and compare the labels with the notes.</p>
+      <form id="answer-form">
+        <label for="answer">Specimen code</label>
+        <input id="answer" name="answer" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Example: AB-12" required>
+        <div class="actions">
+          <button class="primary" type="submit">Submit finding</button>
+          <button class="secondary" type="button" id="clear-answer">Clear</button>
+        </div>
+      </form>
+      <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+      <section id="success" class="success" hidden aria-labelledby="success-title">
+        <h2 id="success-title">Finding accepted.</h2>
+        <p><strong>Fun lies ahead.</strong></p>
+        <p>The next research file is ready to be discovered.</p>
+        <a class="button-link primary" href="./next-clue.html">Open Research File Ω-14 →</a>
+      </section>
     </section>
   </main>
 
   <footer>
-    Fieldstation Research Archive • Classroom Investigation
+    <div class="wrap">FIELDSTATION Research Archive • Classroom investigation • Archive Ω-13</div>
   </footer>
+
+  <script>
+    // TEACHER NOTE:
+    // This is a casual puzzle gate, not secure authentication.
+    // The answer is in this public JavaScript and can be found by inspecting the published file.
+    // Change the answer and your private hints together if you customize the puzzle.
+    const ACCEPTED_ANSWERS = ["m-11", "m11"];
+
+    document.querySelectorAll("[data-record]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const id = button.dataset.record;
+        const panel = document.getElementById("record-" + id);
+        const willOpen = panel.hidden;
+        panel.hidden = !willOpen;
+        button.setAttribute("aria-expanded", String(willOpen));
+        button.textContent = willOpen ? "Close record" : "Open record";
+      });
+    });
+
+    const form = document.getElementById("answer-form");
+    const answerInput = document.getElementById("answer");
+    const feedback = document.getElementById("feedback");
+    const success = document.getElementById("success");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const guess = answerInput.value.trim().toLowerCase().replace(/\s+/g, "");
+      if (ACCEPTED_ANSWERS.includes(guess)) {
+        feedback.textContent = "";
+        feedback.className = "feedback";
+        success.hidden = false;
+        success.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      } else {
+        success.hidden = true;
+        feedback.textContent = "Finding not accepted. Compare what each record says with what the archivist omitted.";
+        feedback.className = "feedback error";
+      }
+    });
+
+    document.getElementById("clear-answer").addEventListener("click", () => {
+      answerInput.value = "";
+      feedback.textContent = "";
+      feedback.className = "feedback";
+      success.hidden = true;
+      answerInput.focus();
+    });
+  </script>
 </body>
 </html>
